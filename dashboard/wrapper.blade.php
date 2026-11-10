@@ -1,4 +1,9 @@
 <link rel="stylesheet" href="/assets/extensions/prmsidebar/dashboard.style.css?v=1.0.3">
+<style>
+  body { padding-left: 230px; padding-top: 50px; }
+  body.prm-sb-collapsed { padding-left: 0; }
+  @@media (max-width: 900px) { body { padding-left: 0; } }
+</style>
 <script>
 (function () {
   var lastPath = '';
@@ -6,6 +11,7 @@
     return window.matchMedia('(max-width: 900px)').matches;
   };
 
+  document.body.classList.add('prm-sb');
   try {
     if (localStorage.getItem('prm-sb-collapsed') === '1') {
       document.body.classList.add('prm-sb-collapsed');
