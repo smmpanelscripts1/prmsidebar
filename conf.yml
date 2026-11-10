@@ -1,0 +1,37 @@
+info:
+  name: "PRM Sidebar"
+  identifier: "prmsidebar"
+  description: "Client üst menüyü ve sunucu SubNavigation sekmelerini admin benzeri sol sidebar’a taşır."
+  flags: ""
+  version: "1.0.0"
+  target: "beta-2026-08"
+  author: "Peto"
+  icon: ""
+  website: ""
+
+admin:
+  view: "view.blade.php"
+  controller: ""
+  css: ""
+  wrapper: ""
+
+dashboard:
+  css: "dashboard.css"
+  wrapper: "dashboard/wrapper.blade.php"
+  components: ""
+
+data:
+  directory: ""
+  public: ""
+  console: ""
+
+requests:
+  views: ""
+  app: ""
+  routers:
+    application: ""
+    client: ""
+    web: ""
+
+database:
+  migrations: ""

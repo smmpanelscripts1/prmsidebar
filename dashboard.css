@@ -1,0 +1,337 @@
+/* Client sidebar — AdminLTE / pterodactyl.css skin */
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700");
+
+:root {
+  --prm-sb-w: 230px;
+  --prm-nav-h: 50px;
+  --prm-nav-block: 0px;
+  --prm-sb-bg: #181f27;
+  --prm-hd-bg: #1f2933;
+  --prm-hd-fg: #9aa5b1;
+  --prm-item: #b8c7ce;
+  --prm-active: #099aa5;
+  --prm-head: #797979;
+  --prm-head-bg: rgba(14, 17, 21, 0.51);
+  --prm-hover: #1e282c;
+}
+
+body.prm-sb {
+  padding-left: var(--prm-sb-w);
+  padding-top: var(--prm-nav-h);
+  transition: padding-left .18s ease;
+}
+
+body.prm-sb::before {
+  content: "";
+  position: fixed;
+  top: var(--prm-nav-h);
+  left: 0;
+  bottom: 0;
+  width: var(--prm-sb-w);
+  background: var(--prm-sb-bg);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .12), 0 2px 4px 0 rgba(0, 0, 0, .08);
+  z-index: 80;
+  transition: transform .18s ease;
+}
+
+#prm-sb-toggle,
+#prm-sb-backdrop {
+  display: none;
+}
+
+body.prm-sb #prm-sb-toggle {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: var(--prm-sb-w);
+  z-index: 200;
+  width: 50px;
+  height: var(--prm-nav-h);
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 4px;
+  border: 0;
+  background: transparent;
+  color: var(--prm-hd-fg);
+  cursor: pointer;
+  pointer-events: auto;
+  transition: left .18s ease;
+}
+
+body.prm-sb #prm-sb-toggle:hover {
+  background: #1c252e;
+}
+
+body.prm-sb #prm-sb-toggle span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: var(--prm-hd-fg);
+}
+
+body.prm-sb #NavigationBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: var(--prm-nav-h);
+  z-index: 100;
+  overflow: visible !important;
+  background: var(--prm-hd-bg) !important;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .12), 0 2px 4px 0 rgba(0, 0, 0, .08);
+  font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+body.prm-sb #NavigationBar .mx-auto {
+  max-width: none !important;
+  margin: 0 !important;
+  height: var(--prm-nav-h) !important;
+  min-height: var(--prm-nav-h);
+  padding-left: 0 !important;
+}
+
+body.prm-sb #logo {
+  position: relative;
+  flex: 0 0 var(--prm-sb-w);
+  width: var(--prm-sb-w);
+  max-width: var(--prm-sb-w);
+  height: var(--prm-nav-h);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--prm-hd-bg);
+}
+
+body.prm-sb #logo a {
+  font-size: 20px !important;
+  font-weight: 300 !important;
+  color: var(--prm-hd-fg) !important;
+  padding: 0 !important;
+  line-height: var(--prm-nav-h);
+}
+
+body.prm-sb #logo a:hover {
+  color: #fff !important;
+}
+
+body.prm-sb #NavigationBar #logo + * {
+  position: fixed;
+  top: var(--prm-nav-h);
+  left: 0;
+  right: auto;
+  width: var(--prm-sb-w);
+  height: auto;
+  max-height: calc(100vh - var(--prm-nav-h));
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  background: transparent;
+  z-index: 90;
+  overflow: hidden;
+  font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  transition: transform .18s ease;
+}
+
+body.prm-sb #NavigationBar #logo + *::before {
+  content: "PANEL";
+  display: block;
+  padding: 10px 25px 10px 15px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: var(--prm-head);
+  background: var(--prm-head-bg);
+}
+
+body.prm-sb #NavigationBar #logo + * > a,
+body.prm-sb #NavigationBar #logo + * > button,
+body.prm-sb #NavigationBar #logo + * > .navigation-link {
+  width: 100%;
+  height: auto !important;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  padding: 12px 5px 12px 15px !important;
+  color: var(--prm-item) !important;
+  box-shadow: none !important;
+  background: transparent;
+  border: 0;
+  border-left: 3px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+body.prm-sb #NavigationBar #logo + * > a:hover,
+body.prm-sb #NavigationBar #logo + * > button:hover,
+body.prm-sb #NavigationBar #logo + * > .navigation-link:hover {
+  color: #fff !important;
+  background: var(--prm-hover) !important;
+}
+
+body.prm-sb #NavigationBar #logo + * > a.active {
+  color: #fff !important;
+  background: var(--prm-hover) !important;
+  border-left-color: var(--prm-active);
+  padding-left: 12px !important;
+  box-shadow: none !important;
+}
+
+body.prm-sb #NavigationBar #logo + * svg {
+  width: 14px;
+  height: 14px;
+  flex: 0 0 20px;
+}
+
+body.prm-sb #NavigationDashboard::after { content: "Dashboard"; }
+body.prm-sb #NavigationAdmin::after { content: "Admin"; }
+body.prm-sb #NavigationAccount::after { content: "Account"; }
+body.prm-sb #NavigationLogout::after { content: "Sign Out"; }
+body.prm-sb #NavigationBar #logo + * > .navigation-link::after { content: "Search"; }
+
+body.prm-sb #SubNavigation {
+  position: fixed !important;
+  top: calc(var(--prm-nav-h) + var(--prm-nav-block));
+  left: 0;
+  right: auto;
+  bottom: 0;
+  width: var(--prm-sb-w);
+  height: auto !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  z-index: 85;
+  background: transparent !important;
+  box-shadow: none !important;
+  font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  transition: transform .18s ease;
+}
+
+body.prm-sb #SubNavigation > div {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  max-width: none !important;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body.prm-sb #SubNavigation > div::before {
+  content: attr(data-prm-label);
+  display: block;
+  padding: 10px 25px 10px 15px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: var(--prm-head);
+  background: var(--prm-head-bg);
+}
+
+body.prm-sb #SubNavigation > div > a,
+body.prm-sb #SubNavigation > div > div {
+  display: flex !important;
+  align-items: center;
+  width: 100%;
+  margin: 0 !important;
+  padding: 12px 5px 12px 15px !important;
+  white-space: nowrap;
+  color: var(--prm-item) !important;
+  box-shadow: none !important;
+  border-left: 3px solid transparent;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+body.prm-sb #SubNavigation > div > a:hover,
+body.prm-sb #SubNavigation > div > div:hover {
+  color: #fff !important;
+  background: var(--prm-hover);
+}
+
+body.prm-sb #SubNavigation > div > a.active {
+  color: #fff !important;
+  background: var(--prm-hover);
+  border-left-color: var(--prm-active);
+  padding-left: 12px !important;
+  box-shadow: none !important;
+}
+
+body.prm-sb #SubNavigation svg {
+  width: 14px;
+  height: 14px;
+  flex: 0 0 20px;
+  margin-right: 6px;
+}
+
+body.prm-sb #app > div[style*="height: 2px"],
+body.prm-sb div[style="height: 2px"] {
+  top: var(--prm-nav-h) !important;
+  left: 0 !important;
+  width: 100% !important;
+  z-index: 130 !important;
+}
+
+body.prm-sb-collapsed {
+  padding-left: 0;
+}
+
+body.prm-sb-collapsed::before,
+body.prm-sb-collapsed #NavigationBar #logo + *,
+body.prm-sb-collapsed #SubNavigation {
+  transform: translateX(-100%);
+  pointer-events: none;
+}
+
+body.prm-sb-collapsed #logo {
+  flex: 0 0 0 !important;
+  width: 0 !important;
+  max-width: 0 !important;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+body.prm-sb-collapsed #prm-sb-toggle {
+  left: 0;
+}
+
+@media (max-width: 900px) {
+  body.prm-sb { padding-left: 0; padding-top: var(--prm-nav-h); }
+  body.prm-sb::before { display: none; }
+
+  body.prm-sb #prm-sb-toggle {
+    left: 0;
+  }
+
+  #prm-sb-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 80;
+    background: rgba(0, 0, 0, .45);
+  }
+
+  body.prm-sb-open #prm-sb-backdrop { display: block; }
+
+  body.prm-sb #NavigationBar #logo + *,
+  body.prm-sb #SubNavigation,
+  body.prm-sb::before {
+    transform: translateX(-100%);
+    transition: transform .18s ease;
+  }
+
+  body.prm-sb-open #NavigationBar #logo + *,
+  body.prm-sb-open #SubNavigation,
+  body.prm-sb-open::before {
+    transform: none;
+  }
+
+  body.prm-sb-open::before { display: block; }
+}
