@@ -1,6 +1,11 @@
-<link rel="stylesheet" href="/assets/extensions/prmsidebar/dashboard.style.css?v=1.0.3">
+<link rel="stylesheet" href="/assets/extensions/prmsidebar/dashboard.style.css?v=1.0.4">
+<script>
+document.documentElement.classList.toggle('prm-sb-auth', (location.pathname || '').indexOf('/auth') === 0);
+</script>
 <style>
-  body { padding-left: 230px; padding-top: 50px; }
+  html:not(.prm-sb-auth) body { padding-left: 230px; padding-top: 50px; }
+  html.prm-sb-auth body { padding: 0 !important; }
+  html.prm-sb-auth body::before { display: none !important; }
   body.prm-sb-collapsed { padding-left: 0; }
   @@media (max-width: 900px) { body { padding-left: 0; } }
 </style>
@@ -10,13 +15,32 @@
   var isMobile = function () {
     return window.matchMedia('(max-width: 900px)').matches;
   };
+  var isAuthScreen = function () {
+    return (location.pathname || '').indexOf('/auth') === 0;
+  };
 
-  document.body.classList.add('prm-sb');
-  try {
-    if (localStorage.getItem('prm-sb-collapsed') === '1') {
-      document.body.classList.add('prm-sb-collapsed');
-    }
-  } catch (e) {}
+  function leaveAuthChrome() {
+    document.documentElement.classList.add('prm-sb-auth');
+    document.body.classList.remove('prm-sb');
+    document.body.classList.remove('prm-sb-open');
+    document.body.classList.remove('prm-sb-sub');
+    var btn = document.getElementById('prm-sb-toggle');
+    var mask = document.getElementById('prm-sb-backdrop');
+    if (btn) btn.remove();
+    if (mask) mask.remove();
+  }
+
+  if (isAuthScreen()) {
+    leaveAuthChrome();
+  } else {
+    document.documentElement.classList.remove('prm-sb-auth');
+    document.body.classList.add('prm-sb');
+    try {
+      if (localStorage.getItem('prm-sb-collapsed') === '1') {
+        document.body.classList.add('prm-sb-collapsed');
+      }
+    } catch (e) {}
+  }
 
   function ensureChrome() {
     if (!document.getElementById('prm-sb-toggle')) {
@@ -60,6 +84,12 @@
   }
 
   function tick() {
+    if (isAuthScreen()) {
+      leaveAuthChrome();
+      lastPath = location.pathname;
+      return;
+    }
+    document.documentElement.classList.remove('prm-sb-auth');
     var bar = document.getElementById('NavigationBar');
     if (!bar) return;
     ensureChrome();

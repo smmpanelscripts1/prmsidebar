@@ -15,6 +15,16 @@
   --prm-hover: #1e282c;
 }
 
+html.prm-sb-auth body {
+  padding: 0 !important;
+}
+
+html.prm-sb-auth body::before,
+html.prm-sb-auth #prm-sb-toggle,
+html.prm-sb-auth #prm-sb-backdrop {
+  display: none !important;
+}
+
 body.prm-sb {
   padding-left: var(--prm-sb-w);
   padding-top: var(--prm-nav-h);
